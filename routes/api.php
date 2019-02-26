@@ -17,4 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('badges-download', 'BadgesController@getBadges');
+Route::group(['prefix' => ''], function()
+{
+    Route::post('badges-download', 'BadgesController@getBadges');
+});
