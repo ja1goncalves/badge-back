@@ -24,19 +24,17 @@ class BadgeCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'participants' => 'required|string',
+            'participants' => 'nullable|string',
             'details_badge' => 'required',
-            'layout' => 'required'
+            'layout' => 'nullable'
         ];
     }
 
     public function messages()
     {
         return [
-            'participants.required' => 'É necessário ter os participantes para gerar os pdfs',
             'participants.string' => 'Impossível leitura de participantes',
             'details_badge.required' => 'É necessário as informações pra criaçãr o pdf',
-            'layout.required' => 'Imagem do pdf é necessária.'
         ];
     }
 }
