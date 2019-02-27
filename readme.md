@@ -7,19 +7,26 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## About Laravel
+## Install project
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Se faz necessário ter instalado o php >= 7.1 na maquina, se não rode:
+```bash
+sudo apt-get install php7.2 php7.2-cli php7.2-common php7.2-curl php7.2-dba php7.2-dev php7.2-fpm php7.2-imap php7.2-intl php7.2-json php7.2-mbstring php7.2-mysql php7.2-odbc php7.2-opcache php7.2-sqlite3 php7.2-xml php7.2-zip
+```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Criação do banco de dados para aplicação:
+```bash
+mysql -u root -p
+create database badges;
+exit
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Instalação dos pacote da aplicação:
+```bash
+composer install
+php artisan key:generate
+php artisan serve
+```
 
 ## Learning Laravel
 
