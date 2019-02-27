@@ -39,6 +39,7 @@ class BadgesController extends Controller
 
     public function getBadges(BadgeCreateRequest $request)
     {
-        return response()->json($this->service->getBadges($request->all()));
+        $pdf = $this->service->getBadges($request->all());
+        return $pdf->download('crachas.pdf');
     }
 }

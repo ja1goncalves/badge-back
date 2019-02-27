@@ -7,7 +7,7 @@
  */
 
 namespace App\Services;
-
+use PDF;
 
 class BadgeService extends AppService
 {
@@ -51,14 +51,7 @@ class BadgeService extends AppService
             if(empty($participants)){
                 $response['message'] = 'Não foi possivel selecionar os participantes';
             }else{
-                $data = $this->generatePDFsByParticipants($participants, $data['details_badge'], $data['layout']);
-                if(!$data){
-                    $response = $data;
-                }else{
-                    $response['message'] = 'Concluido';
-                    $response['data'] = $data;
-                    $response['error'] = false;
-                }
+                $response = $this->generatePDFsByParticipants($participants, $data['details_badge'], $data['layout']);
             }
         }
 
@@ -67,10 +60,23 @@ class BadgeService extends AppService
 
     private function generatePDFsByParticipants(array $participants, $details_layout, $layout)
     {
-        $data = false;
+        try{
+            $data = [
+                'participants' => $participants,
+                'details_layout' => $details_layout,
+                'layout' => $layout,
+            ];
 
+            $pdf = PDF::loadView('badges', $data);
 
+            return $pdf;
+        }catch (\Exception $e){
+            $pdf = [
+                'error' => true,
+                'message' => $e->getMessage()
+            ];
+        }
 
-        return $data;
+        return $pdf;
     }
 }
