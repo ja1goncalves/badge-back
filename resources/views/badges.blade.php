@@ -3,11 +3,19 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Laravel</title>
+        <title>Badges</title>
+
+        <style type="text/css" media="print">
+            div.page
+            {
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+        </style>
     </head>
     @foreach ($data['participants'] as $participant)
         <body>
-            <div class="col-md-6">
+            <div class="col-md-6 page">
                 <div id="div-badge" class="card-body" style="text-align: center; vertical-align: middle;">
                     <img id="img-badge" src="{{ $data['layout'] }}" alt="your image"/><br>
                     <a class="text" id="text-name" style="{{ $data['details_layout'][0]['style'] }}">{{ $participant['name'] }}</a><br>
