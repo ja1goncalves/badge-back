@@ -8,6 +8,7 @@
 
 namespace App\Services;
 use PDF;
+use View;
 
 class BadgeService extends AppService
 {
@@ -59,7 +60,7 @@ class BadgeService extends AppService
         return $response;
     }
 
-    private function generatePDFsByParticipants(array $participants, $styles, $layout)
+    private function generatePDFsByParticipants(array $participants, $styles, $layout, $page = 'a4')
     {
         try{
             $data = [
@@ -67,8 +68,15 @@ class BadgeService extends AppService
                 'styles' => $styles,
                 'layout' => $layout,
             ];
-            \Log::debug($data);
-            $pdf = \PDF::loadView('badges', ['data' => $data]);
+
+            $view = View::make('badges', [
+                'data' => $data
+            ]);
+
+            $html = $view->render();
+            \Log::debug($html);
+
+            $pdf = PDF::loadView('badges', ['data' => $data])->setPaper($page);
         }catch (\Exception $e){
             $pdf = [
                 'error' => true,
