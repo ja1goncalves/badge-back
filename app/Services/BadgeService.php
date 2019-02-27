@@ -31,7 +31,7 @@ class BadgeService extends AppService
             $participants = [];
 
             $lines = explode("\n", $txt_participants);
-            $lines = array_splice($lines, 1, sizeof($lines) - 2);
+            $lines = array_splice($lines, 1, count($lines) - 1);
 
             try {
                 foreach ($lines as $line) {
@@ -67,6 +67,7 @@ class BadgeService extends AppService
                 'styles' => $styles,
                 'layout' => $layout,
             ];
+            \Log::debug($data);
             $pdf = \PDF::loadView('badges', ['data' => $data]);
         }catch (\Exception $e){
             $pdf = [
