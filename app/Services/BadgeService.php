@@ -24,7 +24,7 @@ class BadgeService extends AppService
 
         if(empty($data['participants'])){
             $response['message'] = 'Nenhum participante foram selecionados para gerar os crachás.';
-        }else if(empty($data['details_badge'])){
+        }else if(empty($data['style_attributes'])){
             $response['message'] = 'PDFs gerados pelo modo padrão.';
         }else{
             $txt_participants = $data['participants'];
@@ -51,25 +51,23 @@ class BadgeService extends AppService
             if(empty($participants)){
                 $response['message'] = 'Não foi possivel selecionar os participantes';
             }else{
-                $response = $this->generatePDFsByParticipants($participants, $data['details_badge'], $data['layout']);
+                $pdf = $this->generatePDFsByParticipants($participants, $data['style_attributes'], $data['layout']);
+                $response = $pdf;
             }
         }
 
         return $response;
     }
 
-    private function generatePDFsByParticipants(array $participants, $details_layout, $layout)
+    private function generatePDFsByParticipants(array $participants, $styles, $layout)
     {
         try{
             $data = [
                 'participants' => $participants,
-                'details_layout' => $details_layout,
+                'styles' => $styles,
                 'layout' => $layout,
             ];
-
-            $pdf = PDF::loadView('badges', $data);
-
-            return $pdf;
+            $pdf = \PDF::loadView('badges', ['data' => $data]);
         }catch (\Exception $e){
             $pdf = [
                 'error' => true,

@@ -11,7 +11,13 @@
 
 Se faz necessário ter instalado o php >= 7.1 na maquina, se não rode:
 ```bash
-sudo apt-get install php7.2 php7.2-cli php7.2-common php7.2-curl php7.2-dba php7.2-dev php7.2-fpm php7.2-imap php7.2-intl php7.2-json php7.2-mbstring php7.2-mysql php7.2-odbc php7.2-opcache php7.2-sqlite3 php7.2-xml php7.2-zip
+sudo apt-get install php7.2 php7.2-cli php7.2-common php7.2-curl php7.2-dba php7.2-dev php7.2-fpm php7.2-imap php7.2-intl php7.2-json php7.2-mbstring php7.2-mysql php7.2-odbc php7.2-opcache php7.2-sqlite3 php7.2-xml php7.2-zip php7.2-gd
+sudo apt-get install php-imagick
+sudo apt install php-pear
+sudo apt install php7.2-dev graphicsmagick libgraphicsmagick1-dev
+sudo pecl install gmagick-2.0.4RC1
+sudo sh -c 'echo "extension=gmagick.so" >>  /etc/php/7.0/apache2/php.ini'
+sudo service apache2 restart
 ```
 
 Criação do banco de dados para aplicação:

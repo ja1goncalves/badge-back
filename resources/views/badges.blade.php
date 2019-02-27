@@ -18,10 +18,10 @@
             <div class="col-md-6 page">
                 <div id="div-badge" class="card-body" style="text-align: center; vertical-align: middle;">
                     <img id="img-badge" src="{{ $data['layout'] }}" alt="your image"/><br>
-                    <a class="text" id="text-name" style="{{ $data['details_layout'][0]['style'] }}">{{ $participant['name'] }}</a><br>
-                    <a class="text" id="text-institution" style="{{ $data['details_layout'][1]['style'] }}">{{ $participant['institution'] }}</a><br>
-                    <a class="text" id="text-subscription" style="{{ $data['details_layout'][2]['style'] }}">{{ $participant['subscription'] }}</a><br>
-                    <a class="text" id="text-category" style="{{ $data['details_layout'][3]['style'] }}">{{ $participant['category'] }}</a><br>
+                    <a class="text" id="text-name" style="{{ $data['styles']['name'] }}">{{ $participant['name'] }}</a><br>
+                    <a class="text" id="text-institution" style="{{ $data['styles']['institution'] }}">{{ $participant['institution'] }}</a><br>
+                    <a class="text" id="text-subscription" style="{{ $data['styles']['subscription'] }}">{{ $participant['subscription'] }}</a><br>
+                    <a class="text" id="text-category" style="{{ $data['styles']['category'] }}">{{ $participant['category'] }}</a><br>
                 </div>
             </div>
         </body>

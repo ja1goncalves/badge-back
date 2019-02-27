@@ -25,7 +25,7 @@ class BadgeCreateRequest extends FormRequest
     {
         return [
             'participants' => 'nullable|string',
-            'details_badge' => 'required',
+            'style_attributes' => 'required',
             'layout' => 'nullable'
         ];
     }
@@ -34,7 +34,7 @@ class BadgeCreateRequest extends FormRequest
     {
         return [
             'participants.string' => 'Impossível leitura de participantes',
-            'details_badge.required' => 'É necessário as informações pra criaçãr o pdf',
+            'style_attributes.required' => 'É necessário as informações pra criaçãr o pdf',
         ];
     }
 }
