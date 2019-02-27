@@ -21,7 +21,7 @@ create database badges;
 exit
 ```
 
-Instalação dos pacote da aplicação:
+Antes de mais nada, copie o .env.exemple criando um arquivo .env e coloque os dados necessário para o banco de dados. Instalação dos pacote da aplicação:
 ```bash
 composer install
 php artisan key:generate
