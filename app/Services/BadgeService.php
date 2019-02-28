@@ -115,13 +115,13 @@ class BadgeService extends AppService
             throw new \Exception("Não foi possivel identificar os campos!");
         }else if(count($first_line) < 5){
             throw new \Exception("Falta alguns campos para fazer os preenchimentos.");
-        }else if(strtolower($first_line[0]) == self::NOME){
+        }else if(strtolower($first_line[0]) != self::NOME){
             throw new \Exception("O campo nome não foi encontrado");
-        }else if(strtolower($first_line[1]) == self::CATEGORY){
+        }else if(strtolower($first_line[1]) != self::COUNTRY){
             throw new \Exception("O campo categoria/país não foi encontrado");
-        }else if(strtolower($first_line[2]) == self::INSTITUTION){
+        }else if(strtolower($first_line[2]) != self::INSTITUTION){
             throw new \Exception("O campo instituição não foi encontrado");
-        }else if(strtolower($first_line[4]) == self::SUBSCRIPTION){
+        }else if(strtolower($first_line[4]) != self::SUBSCRIPTION){
             throw new \Exception("O campo inscrição não foi encontrado");
         }else{
             unset($first_line);
