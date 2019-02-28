@@ -37,9 +37,14 @@ class BadgesController extends Controller
         $this->validator  = $validator;
     }
 
+    /**
+     * @param BadgeCreateRequest $request
+     * @return mixed
+     * @throws \Exception
+     */
     public function getBadges(BadgeCreateRequest $request)
     {
-        $pdf =  $this->service->getBadges($request->all());
-        return $pdf->download('badges.pdf');
+        $pdf = $this->service->getBadges($request->all());
+        return is_array($pdf) ? $pdf : $pdf->download('badges.pdf');
     }
 }
