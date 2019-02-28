@@ -87,12 +87,12 @@ class BadgeService extends AppService
                 'layout' => $layout,
             ];
 
-            $view = View::make('badges', [
-                'data' => $data
-            ]);
-
-            $html = $view->render();
-            \Log::debug($html);
+//            $view = View::make('badges', [
+//                'data' => $data
+//            ]);
+//
+//            $html = $view->render();
+//            \Log::debug($html);
 
             $pdf = PDF::loadView('badges', ['data' => $data])->setPaper($page);
         }catch (\Exception $e){
