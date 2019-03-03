@@ -60,7 +60,8 @@ class BadgeService extends AppService
                 if(empty($participants)){
                     throw new \Exception('Não foi possivel selecionar os participantes');
                 }else{
-                    $pdf = $this->generatePDFsByParticipants($participants, $data['style_attributes'], $data['layout']);
+                    $page = $data['page'] ?? 'a4';
+                    $pdf = $this->generatePDFsByParticipants($participants, $data['style_attributes'], $data['layout'], $page);
                     $response = $pdf;
                 }
             }catch (\Exception $e){
