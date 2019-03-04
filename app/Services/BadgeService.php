@@ -65,7 +65,8 @@ class BadgeService extends AppService
                     $response = $pdf;
                 }
             }catch (\Exception $e){
-                $return['message'] = $e->getMessage();
+                $response['message'] = $e->getMessage();
+                return $response;
             }
         }
 

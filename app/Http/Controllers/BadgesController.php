@@ -44,7 +44,12 @@ class BadgesController extends Controller
      */
     public function getBadges(BadgeCreateRequest $request)
     {
-        $pdf = $this->service->getBadges($request->all());
-        return is_array($pdf) ? response()->json($pdf, 500) : $pdf->download('badges.pdf');
+        try{
+            $pdf = $this->service->getBadges($request->all());
+        }catch (\Exception $e){
+            return response()->json(['error' => true, 'message' => $e->getMessage()], 500);
+        }
+
+        return $pdf->download('badges.pdf');
     }
 }
